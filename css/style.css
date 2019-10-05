@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+}
+
+body {
+    background-color: #210002;
+}
+
+#pl-0 {
+    background-image: url("../images/parallax0.png");
+    background-color: #ffaf1b;
+}
+#pl-1 {
+    background-image: url("../images/parallax1.png");
+}
+#pl-2 {
+    background-image: url("../images/parallax2.png");
+}
+#pl-3 {
+    background-image: url("../images/parallax3.png");
+}
+#pl-4 {
+    background-image: url("../images/parallax4.png");
+}
+#pl-5 {
+    background-image: url("../images/parallax5.png");
+}
+#pl-6 {
+    background-image: url("../images/parallax6.png");
+}
+#pl-7 {
+    background-image: url("../images/parallax7.png");
+}
+#pl-8 {
+    background-image: url("../images/parallax8.png");
+}
+
+.parallax {
+    background-position: bottom center;
+    background-size: auto 1038px;
+    background-repeat: repeat-x;
+    width: 100vw;
+    height: 1000px;
+    position: fixed;
+    top: 0;
+    pointer-events: none;
+}
+
+#main {
+    height: 9000px;
+    width: 100vw;
+    position: fixed;
+}
+
+#spacer {
+    height: 1000px;
+}
+
+#content {
+    background-color: #210002;
+    height: 9000px;
+}
+
+
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
