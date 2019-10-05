@@ -39,7 +39,7 @@ body {
     width: 100vw;
     height: 1000px;
     position: fixed;
-    top: 0;
+    top: 1px;
     pointer-events: none;
 }
 
