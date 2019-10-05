@@ -5,10 +5,15 @@ document.addEventListener('DOMContentLoaded', evt => {
     const minY = -(10000 - window.innerHeight); // negative (pageheight - viewport height)
 
     const transformElement = (element, pos) => {
-        element.setAttribute('style', `transform: translate3d(0px, ${pos}px, 0px)`);
+        element.style.transform = `translate3d(0px, ${pos}px, 0px)`;
     };
+
     const tweenElement = (element, pos) => {
-        TweenLite.to(element, 0.3, {top: pos});
+        TweenMax.to(element, .25, {
+                y: pos,
+                ease: Power2.easeOut
+            },
+        );
     };
 
     const onDrag = moveElementFn => {
@@ -24,19 +29,28 @@ document.addEventListener('DOMContentLoaded', evt => {
     const draggable = Draggable.create(main, {
         allowContextMenu: true,
         type: 'y',
-        bounds: { maxY, minY },
+        bounds: {maxY, minY},
         cursor: 'default',
         throwProps: true,
-        onDrag,
-        onThrowUpdate: onDrag,
+        onDrag: () => requestAnimationFrame(onDrag),
+        onThrowUpdate: () => requestAnimationFrame(onDrag),
         zIndexBoost: false
     })[0];
 
+
+    let mainAnim, layerAnim;
     document.addEventListener('wheel', evt => {
-        draggable.y -= evt.deltaY;
+        if (mainAnim) {
+            cancelAnimationFrame(mainAnim);
+        }
+        if (layerAnim) {
+            cancelAnimationFrame(layerAnim)
+        }
+
+        draggable.y -= evt.deltaY * 2;
         if (draggable.y > maxY) draggable.y = maxY;
         if (draggable.y < minY) draggable.y = minY;
-        tweenElement(main, draggable.y);
-        onDrag(tweenElement);
+        mainAnim = requestAnimationFrame(() => tweenElement(main, draggable.y));
+        layerAnim = requestAnimationFrame(() => onDrag(tweenElement));
     })
 });
