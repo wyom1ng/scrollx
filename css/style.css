@@ -33,12 +33,20 @@ body {
 }
 #pl-8 {
     background-image: url("../images/parallax8.png");
+    background-position: bottom center;
+    background-size: auto 1038px;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 1000px;
+    position: fixed;
+    top: 0;
+    pointer-events: none;
 }
 
 .parallax {
     background-position: bottom center;
     background-size: auto 1038px;
-    background-repeat: repeat-x;
+    background-repeat: no-repeat;
     width: 100vw;
     height: 1000px;
     position: fixed;
@@ -63,6 +71,6 @@ body {
 
 
 ::-webkit-scrollbar {
-    width: 0;  /* Remove scrollbar space */
+    width: 0px;  /* Remove scrollbar space */
     background: transparent;  /* Optional: just make scrollbar invisible */
 }
