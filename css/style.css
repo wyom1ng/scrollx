@@ -3,54 +3,45 @@
 }
 
 body {
-    background-color: #210002;
+    background-color: black;
 }
 
 #pl-0 {
     background-image: url("../images/parallax0.png");
     background-color: #ffaf1b;
+    width: 5760px;
 }
 #pl-1 {
     background-image: url("../images/parallax1.png");
+    width: 7910px;
 }
 #pl-2 {
     background-image: url("../images/parallax2.png");
+    width: 7419px;
+    top: 200px;
 }
 #pl-3 {
     background-image: url("../images/parallax3.png");
+    width: 7901px;
+    top: 300px;
 }
 #pl-4 {
     background-image: url("../images/parallax4.png");
-}
-#pl-5 {
-    background-image: url("../images/parallax5.png");
-}
-#pl-6 {
-    background-image: url("../images/parallax6.png");
-}
-#pl-7 {
-    background-image: url("../images/parallax7.png");
-}
-#pl-8 {
-    background-image: url("../images/parallax8.png");
-    background-position: bottom center;
-    background-size: auto 1038px;
+    width: 7453px;
+    background-position: bottom left;
     background-repeat: no-repeat;
-    width: 100vw;
-    height: 1000px;
+    height: 100vh;
     position: fixed;
-    top: 1px;
-    pointer-events: none;
+    left: 0;
+    top: 400px;
 }
 
 .parallax {
-    background-position: bottom center;
-    background-size: auto 1038px;
+    background-position: bottom left;
     background-repeat: no-repeat;
-    width: 100vw;
-    height: 1000px;
+    height: 100vh;
     position: fixed;
-    top: 0;
+    left: 0;
     pointer-events: none;
 }
 
@@ -58,10 +49,6 @@ body {
     height: 9000px;
     width: 100vw;
     position: fixed;
-}
-
-#spacer {
-    height: 1000px;
 }
 
 #content {

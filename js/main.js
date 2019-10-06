@@ -1,16 +1,17 @@
 document.addEventListener('DOMContentLoaded', evt => {
     const layers = document.querySelectorAll('.parallax');
-    const main = document.getElementById('main');
-    const maxY = 0;
-    const minY = -(10000 - window.innerHeight); // negative (pageheight - viewport height)
+    const main = document.getElementById('pl-4');
+    const maxX = 0;
+    const minX = -(7453 - window.innerWidth); // negative (page width - viewport width)
+    console.log(minX);
 
     const transformElement = (element, pos) => {
-        element.style.transform = `translate3d(0px, ${pos}px, 0px)`;
+        element.style.transform = `translate3d(${pos}px, 0px, 0px)`;
     };
 
     const tweenElement = (element, pos) => {
         TweenMax.to(element, .25, {
-                y: pos,
+                x: pos,
                 ease: Power2.easeOut
             },
         );
@@ -18,18 +19,18 @@ document.addEventListener('DOMContentLoaded', evt => {
 
     const onDrag = moveElementFn => {
         moveElementFn = moveElementFn instanceof Function ? moveElementFn : transformElement;
+        const percentage = draggable.x / -minX;
         for (let i = 0; i < layers.length; i++) {
             const layer = layers[i];
-            const speed = parseInt(layer.getAttribute('data-speed'), 10) / 100;
-            const yPos = draggable.y * speed + 1;   // offset by one pixel to bypass transform glitches (white lines)
-            moveElementFn(layer, yPos);
+            const xPos = (layer.offsetWidth - window.innerWidth) * percentage;   // offset by one pixel to bypass transform glitches (white lines)
+            moveElementFn(layer, xPos);
         }
     };
 
     const draggable = Draggable.create(main, {
         allowContextMenu: true,
-        type: 'y',
-        bounds: {maxY, minY},
+        type: 'x',
+        bounds: {maxX, minX},
         cursor: 'default',
         throwProps: true,
         onDrag: () => requestAnimationFrame(onDrag),
@@ -47,10 +48,10 @@ document.addEventListener('DOMContentLoaded', evt => {
             cancelAnimationFrame(layerAnim)
         }
 
-        draggable.y -= evt.deltaY * 2;
-        if (draggable.y > maxY) draggable.y = maxY;
-        if (draggable.y < minY) draggable.y = minY;
-        mainAnim = requestAnimationFrame(() => tweenElement(main, draggable.y));
+        draggable.x -= evt.deltaY * 2;
+        if (draggable.x > maxX) draggable.x = maxX;
+        if (draggable.x < minX) draggable.x = minX;
+        mainAnim = requestAnimationFrame(() => tweenElement(main, draggable.x));
         layerAnim = requestAnimationFrame(() => onDrag(tweenElement));
     })
 });
