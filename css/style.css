@@ -9,55 +9,51 @@ body {
 #pl-0 {
     background-image: url("../images/parallax0.png");
     background-color: #ffaf1b;
-    width: 5760px;
+    width: 533vh;
 }
 #pl-1 {
     background-image: url("../images/parallax1.png");
-    width: 7910px;
+    width: 732vh;
 }
 #pl-2 {
     background-image: url("../images/parallax2.png");
-    width: 7419px;
+    width: 687vh;
     top: 200px;
 }
 #pl-3 {
     background-image: url("../images/parallax3.png");
-    width: 7901px;
+    width: 732vh;
     top: 300px;
 }
 #pl-4 {
     background-image: url("../images/parallax4.png");
-    width: 7453px;
+    width: inherit;
+    height: inherit;
+
     background-position: bottom left;
     background-repeat: no-repeat;
-    height: 100vh;
+    background-size: cover;
     position: fixed;
     left: 0;
     top: 400px;
 }
 
+#spacer {
+    height: 400px;
+}
+
+#main {
+    height: 100vh;
+    position: fixed;
+    width: 690vh;
+}
+
 .parallax {
     background-position: bottom left;
     background-repeat: no-repeat;
+    background-size: cover;
     height: 100vh;
     position: fixed;
     left: 0;
     pointer-events: none;
-}
-
-#main {
-    height: 9000px;
-    width: 100vw;
-    position: fixed;
-}
-
-#content {
-    background-color: #210002;
-    height: 9000px;
-}
-
-
-::-webkit-scrollbar {
-    width: 0px;  /* Remove scrollbar space */
-    background: transparent;  /* Optional: just make scrollbar invisible */
 }

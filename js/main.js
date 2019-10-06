@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', evt => {
     const layers = document.querySelectorAll('.parallax');
-    const main = document.getElementById('pl-4');
+    const main = document.getElementById('main');
     const maxX = 0;
-    const minX = -(7453 - window.innerWidth); // negative (page width - viewport width)
+    const minX = -(main.offsetWidth - window.innerWidth); // negative (page width - viewport width)
     console.log(minX);
 
     const transformElement = (element, pos) => {
