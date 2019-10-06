@@ -1,9 +1,8 @@
 document.addEventListener('DOMContentLoaded', evt => {
     const layers = document.querySelectorAll('.parallax');
     const main = document.getElementById('main');
-    const maxX = 0;
-    const minX = -(main.offsetWidth - window.innerWidth); // negative (page width - viewport width)
-    console.log(minX);
+    let maxX = 0;
+    let minX = -(main.offsetWidth - window.innerWidth); // negative (page width - viewport width)
 
     const transformElement = (element, pos) => {
         element.style.transform = `translate3d(${pos}px, 0px, 0px)`;
@@ -41,17 +40,21 @@ document.addEventListener('DOMContentLoaded', evt => {
 
     let mainAnim, layerAnim;
     document.addEventListener('wheel', evt => {
-        if (mainAnim) {
-            cancelAnimationFrame(mainAnim);
-        }
-        if (layerAnim) {
-            cancelAnimationFrame(layerAnim)
-        }
+        cancelAnimationFrame(mainAnim);
+        cancelAnimationFrame(layerAnim);
 
         draggable.x -= evt.deltaY * 2;
         if (draggable.x > maxX) draggable.x = maxX;
         if (draggable.x < minX) draggable.x = minX;
         mainAnim = requestAnimationFrame(() => tweenElement(main, draggable.x));
         layerAnim = requestAnimationFrame(() => onDrag(tweenElement));
-    })
+    });
+
+    let resizeTimer;
+    window.onresize = () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            location.reload();
+        }, 250);
+    };
 });
